@@ -1,0 +1,307 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OngProject</name>
+    </assembly>
+    <members>
+        <member name="M:OngProject.Controllers.CategoriesController.GetAll(System.Int32)">
+            <summary>
+            Action that allows obtaining all categories
+            </summary>
+            <param name="page">Number of pages</param>
+            <returns>returns all paginated categories </returns>
+        </member>
+        <member name="M:OngProject.Controllers.CategoriesController.GetById(System.Int32)">
+            <summary>
+            Action that allows obtaining a category
+            </summary>
+            <param name="id">Identifier of category, must be numeric</param>
+            <returns>Return de respective category</returns>
+        </member>
+        <member name="M:OngProject.Controllers.CategoriesController.Insert(OngProject.Core.DTOs.CategoriesDTO)">
+            <summary>
+            Action that allows insert a Category
+            </summary>
+            <param name="categoriesDTO">Name, Description, url for image</param>
+            <returns>The category</returns>
+        </member>
+        <member name="M:OngProject.Controllers.CategoriesController.Update(System.Int32,OngProject.Core.DTOs.CategoriesDTO)">
+            <summary>
+            Action that allows modifying a category  
+            </summary>
+            <param name="id">Identifier of the category to modify</param>
+            <param name="categoryDTO">Name, Description, url for image</param>
+            <returns>Positive message for the action of update </returns>
+        </member>
+        <member name="M:OngProject.Controllers.CategoriesController.Delete(System.Int32)">
+            <summary>
+            Action that allows delete an specific category 
+            </summary>
+            <param name="id">Identifier of the category</param>
+            <returns>Positive message for the action of delete</returns>
+        </member>
+        <member name="M:OngProject.Controllers.MembersController.GetAll(System.Int32)">
+            <summary>
+            GET: Get all the members.
+            </summary>
+            <param name="page">Number of the page of type integer, if it does not exist it returns a 404."
+            Example: 1</param>
+            <returns>Members</returns>
+        </member>
+        <member name="M:OngProject.Controllers.MembersController.Insert(OngProject.Core.DTOs.MembersRequestDTO)">
+            <summary>
+            POST: Insert a Members
+            </summary>
+            <param name="membersRequestDTO">
+            Name: String type field required
+            FacebookURL: String type field
+            InstagramURL: String
+            LinkedinURL: String
+            Image: String type field required
+            Description: String
+            Example:
+            {
+            "Name": "Pablo",
+            "FacebookURL": "pablo@a",
+            "InstagramURL": "pablo@a",
+            "LinkedinURL": "pablo@a",
+            "image": "image base64",
+            "Description": "pablo"
+            }
+            </param>
+            <returns>Code 200: "Members was successfully added"</returns>
+        </member>
+        <member name="M:OngProject.Controllers.MembersController.Delete(System.Int32)">
+            <summary>
+            DELETE: Delete a Members
+            </summary>
+            <param name="id">Id of the members to Delete, if it can't find it, it returns a 404."
+            Example: 1</param>
+            <returns>Code 200</returns>
+        </member>
+        <member name="M:OngProject.Controllers.MembersController.Update(System.Int32,OngProject.Core.DTOs.MembersDTO)">
+            <summary>
+            PUT: Update a Members
+            </summary>
+            <param name="id">Id of the members to update, if it can't find it, it returns a 404."</param>
+            <param name="memberUpdate">
+            Name: String type field required
+            FacebookURL: String type field
+            InstagramURL: String
+            LinkedinURL: String
+            Image: String type field required
+            Description: String
+            Example:
+            {
+            "Name": "Miguel",
+            "FacebookURL": "Miguel@a",
+            "InstagramURL": "Miguel@a",
+            "LinkedinURL": "Miguel@a",
+            "image": "image base64",
+            "Description": "Miguel"
+            }
+            </param>
+            <returns>Code 200: JSON of the updated members</returns>
+        </member>
+        <member name="M:OngProject.Controllers.NewsController.GetAll(System.Int32)">
+             <summary>
+             Retrieves 10 news per page
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 Get /News/GetAll?page=1
+            
+             </remarks>
+             <param name="page">The page number to display the corresponding news</param>
+             <returns>200: A list of 10 News and relevant paging information</returns>
+             <response code="404">No news has been found</response>
+        </member>
+        <member name="M:OngProject.Controllers.NewsController.GetById(System.Int32)">
+             <summary>
+             Retrieve the New by its ID.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 Get /News/1
+            
+             </remarks>
+             <param name="id">The id number to display the corresponding new</param>
+             <returns>200: A new with your informationn</returns>
+             <response code="404">No news has been found</response>
+        </member>
+        <member name="M:OngProject.Controllers.NewsController.GetAllComments(System.Int32)">
+             <summary>
+             Retrieves all comments of a specific News
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 Get /News/1/comments
+            
+             </remarks>
+             <param name="id">The id number of the New to retrieve all your comments</param>
+             <returns>200: A list of comments</returns>
+             <response code="404">No news has been found</response>
+        </member>
+        <member name="M:OngProject.Controllers.NewsController.Insert(OngProject.Core.DTOs.NewsInsertDTO)">
+             <summary>
+             Insert a New
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /News
+            
+             </remarks>
+             <param name="newsDTO">
+             Required: Name, Image and Content. Optional: CategoryID
+             Example:
+             {
+             "name": "nameNew",
+             "image": "base64Image",
+             "content": "contentNew"
+             }
+             </param>
+             <returns>200: A new with its content inserted</returns>
+             <response code="400">Category id does not exist</response>
+        </member>
+        <member name="M:OngProject.Controllers.NewsController.Update(System.Int32,OngProject.Core.DTOs.NewsUpdateDTO)">
+             <summary>
+             Update a New that exist
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 Put /News/1/
+            
+             </remarks>
+             <param name="id">The id number of the New to update</param>
+             <param name="newsUpdate">
+             Required: Name, Image and Content. Optional: CategoryID
+             Example:
+             {
+             "name": "nameNew",
+             "image": "base64Image",
+             "content": "contentNew"
+             }
+             </param>
+             <returns>200: A new with its content updated</returns>
+             <response code="404">The entered news does not exist</response>
+        </member>
+        <member name="M:OngProject.Controllers.NewsController.Delete(System.Int32)">
+             <summary>
+             Delete a New that exist
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 DELETE /News/1/
+            
+             </remarks>
+             <param name="id">The id number of the New to delete</param>
+             <returns>204: The news was successfully deleted</returns>
+             <response code="404">The entered news does not exist.</response>
+        </member>
+        <member name="M:OngProject.Controllers.TestimonialsController.GetAll(System.Int32)">
+            <summary>
+            GET: Get all the testimonials.
+            </summary>
+            <param name="page">Number of the page of type integer, if it does not exist it returns a 404 error and the following message "The page number you are looking for does not exist."
+            Example: 1</param>
+            <returns>Testimonials</returns>
+        </member>
+        <member name="M:OngProject.Controllers.TestimonialsController.Insert(OngProject.Core.DTOs.TestimonialsRequestDTO)">
+            <summary>
+            POST: Insert a Testimony
+            </summary>
+            <param name="testimonialsRequestDTO">
+            Name: String type field required
+            Image: String type field
+            Content: String type field required
+            Example:
+            {
+            "name": "Jorge",
+            "image": "image base64",
+            "content": "Testimonio de Jorge"
+            }
+            </param>
+            <returns>Code 200: "Testimony was successfully added"</returns>
+        </member>
+        <member name="M:OngProject.Controllers.TestimonialsController.Update(System.Int32,OngProject.Core.DTOs.TestimonialUpdateDTO)">
+            <summary>
+            PUT: Update a Testimony
+            </summary>
+            <param name="id">Id of the testimony to update, if it can't find it, it returns a 404 error and the following message "The testimonial you are trying to modify was not found."</param>
+            <param name="testimonalDTO">
+            Name: String type field
+            Image: String type field
+            Content: String type field
+            Example: 1
+            {
+            "name": "Daniela",
+            "image": "Image base64",
+            "content": "Testimonio de Daniela"
+            }
+            </param>
+            <returns>Code 200: JSON of the updated testimonial</returns>
+        </member>
+        <member name="M:OngProject.Controllers.TestimonialsController.Delete(System.Int32)">
+            <summary>
+            DELETE: Delete a Testimony
+            </summary>
+            <param name="id">Id of the testimony to Delete, if it can't find it, it returns a 404 error and the following message "The testimonial you want to delete was not found."
+            Example: 1</param>
+            <returns>Code 200</returns>
+        </member>
+        <member name="M:OngProject.Controllers.UsersController.GetAll">
+            <summary>
+            Action that allow obtain all user for Administrator only
+            </summary>
+            <returns>All User</returns>
+        </member>
+        <member name="M:OngProject.Controllers.UsersController.GetUserById(System.Int32)">
+            <summary>
+            Action that allow obtain and User by id
+            </summary>
+            <param name="id">Identifier of user, must be numeric</param>
+            <returns></returns>
+        </member>
+        <member name="M:OngProject.Controllers.UsersController.GetUserInfo">
+            <summary>
+            Action that allows the user to know their data
+            </summary>
+            <returns>Data from user</returns>
+        </member>
+        <member name="M:OngProject.Controllers.UsersController.Insert(OngProject.Core.DTOs.UserRegisterDTO)">
+            <summary>
+            Action for user registration
+            </summary>
+            <param name="user">First Name, Last Name, Email, Password, confirm password</param>
+            <returns>The new user</returns>
+        </member>
+        <member name="M:OngProject.Controllers.UsersController.Login(OngProject.Core.DTOs.LoginRequestDTO)">
+            <summary>
+            Action that allows to enter the system
+            </summary>
+            <param name="login">Email and Password</param>
+            <returns>Token, name and email</returns>
+        </member>
+        <member name="M:OngProject.Controllers.UsersController.Update(System.Int32,OngProject.Core.DTOs.UsersUpdateDTO)">
+            <summary>
+            Action that allow update and user
+            </summary>
+            <param name="id">Identifier of user, must be numeric</param>
+            <param name="userUppodateDTO">First Name, Last Name and photo</param>
+            <returns>Positive message for the action of update</returns>
+        </member>
+        <member name="M:OngProject.Controllers.UsersController.Delete(System.Int32)">
+            <summary>
+            Action that allow delete and user
+            </summary>
+            <param name="id">Identifier of user, must be numeric</param>
+            <returns>Positive message for the action of delete</returns>
+        </member>
+    </members>
+</doc>
